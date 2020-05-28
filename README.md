@@ -23,7 +23,7 @@ Example script on how to setup the decompiler to access the P-Code (Ghidra IL) c
 
 Output:
 ```
-pcode_print.java> Running...
+print_pcode.java> Running...
 seq: (ram, 0x1006f5, 19, 0), OP:  ---  CALL (ram, 0x1005a0, 8) , (const, 0x1007b4, 8)
 seq: (ram, 0x1006fa, 22, 1), OP: (register, 0x0, 4) CALL (ram, 0x1005b0, 8)
 seq: (ram, 0x100706, 46, 2), OP: (register, 0x206, 1) INT_EQUAL (register, 0x0, 4) , (const, 0x37, 4)
@@ -33,5 +33,5 @@ seq: (ram, 0x100718, 53, 1), OP:  ---  BRANCH (ram, 0x100726, 1)
 seq: (ram, 0x100721, 64, 0), OP:  ---  CALL (ram, 0x100590, 8) , (const, 0x1007cf, 8)
 seq: (ram, 0x100726, 54, 0), OP: (register, 0x0, 8) COPY (const, 0x0, 8)
 seq: (ram, 0x10072c, 60, 1), OP:  ---  RETURN (const, 0x0, 8) , (register, 0x0, 8)
-pcode_print.java> Finished!
+print_pcode.java> Finished!
 ```
