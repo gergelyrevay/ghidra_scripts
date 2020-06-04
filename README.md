@@ -35,3 +35,66 @@ seq: (ram, 0x100726, 54, 0), OP: (register, 0x0, 8) COPY (const, 0x0, 8)
 seq: (ram, 0x10072c, 60, 1), OP:  ---  RETURN (const, 0x0, 8) , (register, 0x0, 8)
 print_pcode.java> Finished!
 ```
+
+## pcode_find_const_parameters.java
+Experimental script to find whether the parameters of a CALL pcode operation can be traced back to a constant value. It takes a function looks for all CALLs then evaluates its parameters. At the end dumps all constant values that the CALL depends on. I used this script to play with backtracing.
+
+Output:
+```
+pcode_op_play.java> Running...
+[-] checking input: (unique, 0x100000ab, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x100834, 460, 3), Op: (unique, 0x100000ab, 8) COPY (const, 0x100974, 8)
+[-] COPY with const found, not searching further
+[+] CALL at Seq: (ram, 0x100834, 31, 7) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8), depends on the following constants:
+   [+] (const, 0x100974, 8)
+[-] checking input: (unique, 0x620, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x100840, 465, 8), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[-] checking input: (const, 0x20, 4) Space 48
+[+] Constant found: (const, 0x20, 4)
+[-] checking input: (ram, 0x301010, 8) Space 433
+[+] getInputSource: Seq: (ram, 0x100834, 365, 5), Op: (ram, 0x301010, 8) INDIRECT (ram, 0x301010, 8) , (const, 0x1f, 4)
+[-] getDef returned null, value come from outside the function, not searching further
+[-] getDef returned null, value come from outside the function, not searching further
+[+] CALL at Seq: (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8), depends on the following constants:
+   [+] (const, 0x20, 4)
+   [+] (const, 0x1f, 4)
+[-] checking input: (unique, 0x620, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x100851, 466, 13), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[-] checking input: (unique, 0x620, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x10087e, 475, 1), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[-] checking input: (unique, 0x100000b3, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x10088c, 461, 2), Op: (unique, 0x100000b3, 8) COPY (const, 0x100987, 8)
+[-] COPY with const found, not searching further
+[+] CALL at Seq: (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8), depends on the following constants:
+   [+] (const, 0x100987, 8)
+[-] checking input: (unique, 0x100000bb, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x10089c, 462, 0), Op: (unique, 0x100000bb, 8) COPY (const, 0x10098e, 8)
+[-] COPY with const found, not searching further
+[+] CALL at Seq: (ram, 0x10089c, 106, 4) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8), depends on the following constants:
+   [+] (const, 0x10098e, 8)
+[-] checking input: (unique, 0x100000c3, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x1008b6, 463, 1), Op: (unique, 0x100000c3, 8) COPY (const, 0x100997, 8)
+[-] COPY with const found, not searching further
+[-] checking input: (unique, 0x620, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x1008a3, 476, 0), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[+] CALL at Seq: (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8), depends on the following constants:
+   [+] (const, 0x100997, 8)
+[-] checking input: (unique, 0x100000cb, 8) Space 291
+[+] getInputSource: Seq: (ram, 0x1008c2, 464, 6), Op: (unique, 0x100000cb, 8) COPY (const, 0x1009a4, 8)
+[-] COPY with const found, not searching further
+[+] CALL at Seq: (ram, 0x1008c2, 142, 10) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8), depends on the following constants:
+   [+] (const, 0x1009a4, 8)
+pcode_op_play.java> Finished!
+```
