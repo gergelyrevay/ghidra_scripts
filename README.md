@@ -98,3 +98,26 @@ pcode_op_play.java> Running...
    [+] (const, 0x1009a4, 8)
 pcode_op_play.java> Finished!
 ```
+
+## pcode_influence_branching.java
+
+Experimental script to analyse whether the output of a function call influences branching in the callee function. Also checks whether the output is compared with 0.
+
+Output:
+```
+pcode_influence_branching.java> Running...
+seq: (ram, 0x100834, 31, 7), OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8)
+seq: (ram, 0x10084c, 39, 12), OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8)
+seq: (ram, 0x100858, 45, 17), OP: (register, 0x0, 8) CALL (ram, 0x1006a0, 8) , (unique, 0x620, 8)
+seq: (ram, 0x10088c, 95, 6), OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8)
+[=] influenceBranching: zerocompare yes: seq: (ram, 0x100891, 100, 7), OP: (register, 0x206, 1) INT_EQUAL (register, 0x0, 4) , (const, 0x0, 4)
+[=] influenceBranching: iscompare yes at: seq: (ram, 0x100891, 100, 7), OP: (register, 0x206, 1) INT_EQUAL (register, 0x0, 4) , (const, 0x0, 4)
+[=] influenceBranching: isCondBranch yes at: seq: (ram, 0x100893, 102, 8), OP:  ---  CBRANCH (ram, 0x1008a3, 1) , (register, 0x206, 1)
+[+] Does influence branching
+[+] Does zero compare
+seq: (ram, 0x10089c, 106, 4), OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8)
+seq: (ram, 0x1008b6, 138, 5), OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8)
+seq: (ram, 0x1008c2, 142, 10), OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8)
+seq: (ram, 0x1008db, 122, 2), OP:  ---  CALL (ram, 0x1006b0, 8)
+pcode_influence_branching.java> Finished!
+```
