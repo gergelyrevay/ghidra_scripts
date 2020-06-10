@@ -129,3 +129,84 @@ This is just an experimental script to try whether the dominator algorithms can 
 Some references:
 https://ghidra.re/ghidra_docs/api/ghidra/util/graph/Dominator.html
 https://ghidra.re/ghidra_docs/api/ghidra/graph/algo/ChkDominanceAlgorithm.html
+
+## ControlFlowGraphTest.java
+
+Test script to see how to create a Control Flow Graph of a function as a GDirectedGraph. With the GDirectedGraph the graph algorithms in the Ghidra API can be used. Note that the entry point of the function is hardcoded, so that must be changed according to the target binary.
+
+Output:
+```
+ControlFlowGraphTest.java> Running...
+[+] Printing CFG for Function at: 0x10080a
+[+] Code Block Start Address: 0x10080a
+[-] -----> Successor Block at: 0x10087e
+[-] -----> Successor Block at: 0x100871
+[-] -----> Successor Block at: 0x1006c0
+[-] -----> Successor Block at: 0x1006d0
+[-] -----> Successor Block at: 0x1006a0
+[+] Code Block Start Address: 0x10087e
+[-] -----> Successor Block at: 0x100895
+[-] -----> Successor Block at: 0x1008a3
+[-] -----> Successor Block at: 0x1006e0
+[+] Code Block Start Address: 0x100871
+[-] -----> Successor Block at: 0x10087e
+[+] Code Block Start Address: 0x1006c0
+[+] Code Block Start Address: 0x1006d0
+[+] Code Block Start Address: 0x1006a0
+[+] Code Block Start Address: 0x100895
+[-] -----> Successor Block at: 0x1008c7
+[-] -----> Successor Block at: 0x100690
+[+] Code Block Start Address: 0x1008a3
+[-] -----> Successor Block at: 0x1008c7
+[-] -----> Successor Block at: 0x1006c0
+[-] -----> Successor Block at: 0x100690
+[+] Code Block Start Address: 0x1006e0
+[+] Code Block Start Address: 0x10087e
+[-] -----> Successor Block at: 0x100895
+[-] -----> Successor Block at: 0x1008a3
+[-] -----> Successor Block at: 0x1006e0
+[+] Code Block Start Address: 0x1008c7
+[-] -----> Successor Block at: 0x1008db
+[-] -----> Successor Block at: 0x1008e0
+[+] Code Block Start Address: 0x100690
+[+] Code Block Start Address: 0x1008c7
+[-] -----> Successor Block at: 0x1008db
+[-] -----> Successor Block at: 0x1008e0
+[+] Code Block Start Address: 0x1006c0
+[+] Code Block Start Address: 0x100690
+[+] Code Block Start Address: 0x100895
+[-] -----> Successor Block at: 0x1008c7
+[-] -----> Successor Block at: 0x100690
+[+] Code Block Start Address: 0x1008a3
+[-] -----> Successor Block at: 0x1008c7
+[-] -----> Successor Block at: 0x1006c0
+[-] -----> Successor Block at: 0x100690
+[+] Code Block Start Address: 0x1006e0
+[+] Code Block Start Address: 0x1008db
+[-] -----> Successor Block at: 0x1006b0
+[+] Code Block Start Address: 0x1008e0
+[+] Code Block Start Address: 0x1008db
+[-] -----> Successor Block at: 0x1006b0
+[+] Code Block Start Address: 0x1008e0
+[+] Code Block Start Address: 0x1008c7
+[-] -----> Successor Block at: 0x1008db
+[-] -----> Successor Block at: 0x1008e0
+[+] Code Block Start Address: 0x100690
+[+] Code Block Start Address: 0x1008c7
+[-] -----> Successor Block at: 0x1008db
+[-] -----> Successor Block at: 0x1008e0
+[+] Code Block Start Address: 0x1006c0
+[+] Code Block Start Address: 0x100690
+[+] Code Block Start Address: 0x1006b0
+[+] Code Block Start Address: 0x1006b0
+[+] Code Block Start Address: 0x1008db
+[-] -----> Successor Block at: 0x1006b0
+[+] Code Block Start Address: 0x1008e0
+[+] Code Block Start Address: 0x1008db
+[-] -----> Successor Block at: 0x1006b0
+[+] Code Block Start Address: 0x1008e0
+[+] Code Block Start Address: 0x1006b0
+[+] Code Block Start Address: 0x1006b0
+ControlFlowGraphTest.java> Finished!
+
+```
