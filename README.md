@@ -121,3 +121,11 @@ seq: (ram, 0x1008c2, 142, 10), OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x10
 seq: (ram, 0x1008db, 122, 2), OP:  ---  CALL (ram, 0x1006b0, 8)
 pcode_influence_branching.java> Finished!
 ```
+
+## dominatorTest.java
+
+This is just an experimental script to try whether the dominator algorithms can be used without the GraphService(GraphService is not included in the open source version). Spoiler, it can be. Most of the code is copy-paste from ghidra test code, to be precise from the GraphAlgorithmsTest.java and its parent class. Note that this script does not print anything, the goal is that setV at the end contains the expected nodes(in comment). This can be validated with a debugger.
+
+Some references:
+https://ghidra.re/ghidra_docs/api/ghidra/util/graph/Dominator.html
+https://ghidra.re/ghidra_docs/api/ghidra/graph/algo/ChkDominanceAlgorithm.html
