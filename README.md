@@ -41,62 +41,283 @@ Experimental script to find whether the parameters of a CALL pcode operation can
 
 Output:
 ```
-pcode_op_play.java> Running...
-[-] checking input: (unique, 0x100000ab, 8) Space 291
+pcode_find_const_parameters.java> Running...
+[+] #### Analyzing CALL at seq: (ram, 0x100834, 31, 7), OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8) ####
+[-]     checking input: (unique, 0x100000ab, 8) Space 291
+[+]     HV found: (unique, 0x100000ab, 8), seq (ram, 0x100834, 31, 7) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x100834, 460, 3), Op: (unique, 0x100000ab, 8) COPY (const, 0x100974, 8)
 [-] COPY with const found, not searching further
-[+] CALL at Seq: (ram, 0x100834, 31, 7) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8), depends on the following constants:
-   [+] (const, 0x100974, 8)
-[-] checking input: (unique, 0x620, 8) Space 291
+[=]     CALL at Seq: (ram, 0x100834, 31, 7) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8), depends on the following constants:
+[+] ---> (const, 0x100974, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x100834, 31, 7) ####
+[+] #### Analyzing CALL at seq: (ram, 0x10084c, 39, 12), OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) ####
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x100840, 465, 8), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
 [-] PTRADD/SUB ignoring const and continue
 [-] getDef returned null, value come from outside the function, not searching further
 [-] PTRADD/SUB ignoring const and continue
-[-] checking input: (const, 0x20, 4) Space 48
-[+] Constant found: (const, 0x20, 4)
-[-] checking input: (ram, 0x301010, 8) Space 433
+[-]     checking input: (const, 0x20, 4) Space 48
+[+]     HV found: (const, 0x20, 4), seq (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+]     Constant found: (const, 0x20, 4)
+[-]     checking input: (ram, 0x301010, 8) Space 433
+[+]     HV found: (ram, 0x301010, 8), seq (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x100834, 365, 5), Op: (ram, 0x301010, 8) INDIRECT (ram, 0x301010, 8) , (const, 0x1f, 4)
 [-] getDef returned null, value come from outside the function, not searching further
 [-] getDef returned null, value come from outside the function, not searching further
-[+] CALL at Seq: (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8), depends on the following constants:
-   [+] (const, 0x20, 4)
-   [+] (const, 0x1f, 4)
-[-] checking input: (unique, 0x620, 8) Space 291
+[=]     CALL at Seq: (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8), depends on the following constants:
+[+] ---> (const, 0x20, 4)
+[+] ---> (const, 0x1f, 4)
+[-] #### Finished analyzing CALL at seq: (ram, 0x10084c, 39, 12) ####
+[+] #### Analyzing CALL at seq: (ram, 0x100858, 45, 17), OP: (register, 0x0, 8) CALL (ram, 0x1006a0, 8) , (unique, 0x620, 8) ####
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x100858, 45, 17) OP: (register, 0x0, 8) CALL (ram, 0x1006a0, 8) , (unique, 0x620, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x100851, 466, 13), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
 [-] PTRADD/SUB ignoring const and continue
 [-] getDef returned null, value come from outside the function, not searching further
 [-] PTRADD/SUB ignoring const and continue
-[-] checking input: (unique, 0x620, 8) Space 291
+[-] #### Finished analyzing CALL at seq: (ram, 0x100858, 45, 17) ####
+[+] #### Analyzing CALL at seq: (ram, 0x10088c, 95, 6), OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8) ####
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x10087e, 475, 1), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
 [-] PTRADD/SUB ignoring const and continue
 [-] getDef returned null, value come from outside the function, not searching further
 [-] PTRADD/SUB ignoring const and continue
-[-] checking input: (unique, 0x100000b3, 8) Space 291
+[-]     checking input: (unique, 0x100000b3, 8) Space 291
+[+]     HV found: (unique, 0x100000b3, 8), seq (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x10088c, 461, 2), Op: (unique, 0x100000b3, 8) COPY (const, 0x100987, 8)
 [-] COPY with const found, not searching further
-[+] CALL at Seq: (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8), depends on the following constants:
-   [+] (const, 0x100987, 8)
-[-] checking input: (unique, 0x100000bb, 8) Space 291
+[=]     CALL at Seq: (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8), depends on the following constants:
+[+] ---> (const, 0x100987, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x10088c, 95, 6) ####
+[+] #### Analyzing CALL at seq: (ram, 0x10089c, 106, 4), OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8) ####
+[-]     checking input: (unique, 0x100000bb, 8) Space 291
+[+]     HV found: (unique, 0x100000bb, 8), seq (ram, 0x10089c, 106, 4) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x10089c, 462, 0), Op: (unique, 0x100000bb, 8) COPY (const, 0x10098e, 8)
 [-] COPY with const found, not searching further
-[+] CALL at Seq: (ram, 0x10089c, 106, 4) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8), depends on the following constants:
-   [+] (const, 0x10098e, 8)
-[-] checking input: (unique, 0x100000c3, 8) Space 291
+[=]     CALL at Seq: (ram, 0x10089c, 106, 4) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8), depends on the following constants:
+[+] ---> (const, 0x10098e, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x10089c, 106, 4) ####
+[+] #### Analyzing CALL at seq: (ram, 0x1008b6, 138, 5), OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8) ####
+[-]     checking input: (unique, 0x100000c3, 8) Space 291
+[+]     HV found: (unique, 0x100000c3, 8), seq (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x1008b6, 463, 1), Op: (unique, 0x100000c3, 8) COPY (const, 0x100997, 8)
 [-] COPY with const found, not searching further
-[-] checking input: (unique, 0x620, 8) Space 291
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x1008a3, 476, 0), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
 [-] PTRADD/SUB ignoring const and continue
 [-] getDef returned null, value come from outside the function, not searching further
 [-] PTRADD/SUB ignoring const and continue
-[+] CALL at Seq: (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8), depends on the following constants:
-   [+] (const, 0x100997, 8)
-[-] checking input: (unique, 0x100000cb, 8) Space 291
+[=]     CALL at Seq: (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8), depends on the following constants:
+[+] ---> (const, 0x100997, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x1008b6, 138, 5) ####
+[+] #### Analyzing CALL at seq: (ram, 0x1008c2, 142, 10), OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8) ####
+[-]     checking input: (unique, 0x100000cb, 8) Space 291
+[+]     HV found: (unique, 0x100000cb, 8), seq (ram, 0x1008c2, 142, 10) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
 [+] getInputSource: Seq: (ram, 0x1008c2, 464, 6), Op: (unique, 0x100000cb, 8) COPY (const, 0x1009a4, 8)
 [-] COPY with const found, not searching further
-[+] CALL at Seq: (ram, 0x1008c2, 142, 10) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8), depends on the following constants:
-   [+] (const, 0x1009a4, 8)
-pcode_op_play.java> Finished!
+[=]     CALL at Seq: (ram, 0x1008c2, 142, 10) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8), depends on the following constants:
+[+] ---> (const, 0x1009a4, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x1008c2, 142, 10) ####
+[+] #### Analyzing CALL at seq: (ram, 0x1008db, 122, 2), OP:  ---  CALL (ram, 0x1006b0, 8) ####
+[-] #### Finished analyzing CALL at seq: (ram, 0x1008db, 122, 2) ####
+pcode_find_const_parameters.java> Finished!
+Successfully compiled: pcode_find_const_parameters.java
+pcode_find_const_parameters.java> Running...
+[+] #### Analyzing CALL at seq: (ram, 0x100834, 31, 7), OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8) ####
+[-]     checking input: (unique, 0x100000ab, 8) Space 291
+[+]     HV found: (unique, 0x100000ab, 8), seq (ram, 0x100834, 31, 7) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x100834, 460, 3), Op: (unique, 0x100000ab, 8) COPY (const, 0x100974, 8)
+[-] COPY with const found, not searching further
+[=]     CALL at Seq: (ram, 0x100834, 31, 7) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000ab, 8), depends on the following constants:
+[+]     ---> (const, 0x100974, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x100834, 31, 7) ####
+[+] #### Analyzing CALL at seq: (ram, 0x10084c, 39, 12), OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) ####
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x100840, 465, 8), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[-]     checking input: (const, 0x20, 4) Space 48
+[+]     HV found: (const, 0x20, 4), seq (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+]     Constant found: (const, 0x20, 4)
+[-]     checking input: (ram, 0x301010, 8) Space 433
+[+]     HV found: (ram, 0x301010, 8), seq (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x100834, 365, 5), Op: (ram, 0x301010, 8) INDIRECT (ram, 0x301010, 8) , (const, 0x1f, 4)
+[-] getDef returned null, value come from outside the function, not searching further
+[-] getDef returned null, value come from outside the function, not searching further
+[=]     CALL at Seq: (ram, 0x10084c, 39, 12) OP:  ---  CALL (ram, 0x1006d0, 8) , (unique, 0x620, 8) , (const, 0x20, 4) , (ram, 0x301010, 8), depends on the following constants:
+[+]     ---> (const, 0x20, 4)
+[+]     ---> (const, 0x1f, 4)
+[-] #### Finished analyzing CALL at seq: (ram, 0x10084c, 39, 12) ####
+[+] #### Analyzing CALL at seq: (ram, 0x100858, 45, 17), OP: (register, 0x0, 8) CALL (ram, 0x1006a0, 8) , (unique, 0x620, 8) ####
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x100858, 45, 17) OP: (register, 0x0, 8) CALL (ram, 0x1006a0, 8) , (unique, 0x620, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x100851, 466, 13), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[-] #### Finished analyzing CALL at seq: (ram, 0x100858, 45, 17) ####
+[+] #### Analyzing CALL at seq: (ram, 0x10088c, 95, 6), OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8) ####
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x10087e, 475, 1), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[-]     checking input: (unique, 0x100000b3, 8) Space 291
+[+]     HV found: (unique, 0x100000b3, 8), seq (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x10088c, 461, 2), Op: (unique, 0x100000b3, 8) COPY (const, 0x100987, 8)
+[-] COPY with const found, not searching further
+[=]     CALL at Seq: (ram, 0x10088c, 95, 6) OP: (register, 0x0, 4) CALL (ram, 0x1006e0, 8) , (unique, 0x620, 8) , (unique, 0x100000b3, 8), depends on the following constants:
+[+]     ---> (const, 0x100987, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x10088c, 95, 6) ####
+[+] #### Analyzing CALL at seq: (ram, 0x10089c, 106, 4), OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8) ####
+[-]     checking input: (unique, 0x100000bb, 8) Space 291
+[+]     HV found: (unique, 0x100000bb, 8), seq (ram, 0x10089c, 106, 4) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x10089c, 462, 0), Op: (unique, 0x100000bb, 8) COPY (const, 0x10098e, 8)
+[-] COPY with const found, not searching further
+[=]     CALL at Seq: (ram, 0x10089c, 106, 4) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000bb, 8), depends on the following constants:
+[+]     ---> (const, 0x10098e, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x10089c, 106, 4) ####
+[+] #### Analyzing CALL at seq: (ram, 0x1008b6, 138, 5), OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8) ####
+[-]     checking input: (unique, 0x100000c3, 8) Space 291
+[+]     HV found: (unique, 0x100000c3, 8), seq (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x1008b6, 463, 1), Op: (unique, 0x100000c3, 8) COPY (const, 0x100997, 8)
+[-] COPY with const found, not searching further
+[-]     checking input: (unique, 0x620, 8) Space 291
+[+]     HV found: (unique, 0x620, 8), seq (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x1008a3, 476, 0), Op: (unique, 0x620, 8) PTRSUB (register, 0x20, 8) , (const, 0xffffffffffffffc8, 8)
+[-] PTRADD/SUB ignoring const and continue
+[-] getDef returned null, value come from outside the function, not searching further
+[-] PTRADD/SUB ignoring const and continue
+[=]     CALL at Seq: (ram, 0x1008b6, 138, 5) OP:  ---  CALL (ram, 0x1006c0, 8) , (unique, 0x100000c3, 8) , (unique, 0x620, 8), depends on the following constants:
+[+]     ---> (const, 0x100997, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x1008b6, 138, 5) ####
+[+] #### Analyzing CALL at seq: (ram, 0x1008c2, 142, 10), OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8) ####
+[-]     checking input: (unique, 0x100000cb, 8) Space 291
+[+]     HV found: (unique, 0x100000cb, 8), seq (ram, 0x1008c2, 142, 10) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8) 
+[+]     local var varnode: (stack, 0xfffffffffffffff0, 8)
+[+]     local var varnode: (stack, 0xffffffffffffffc8, 1)
+[+]     local var varnode: (stack, 0xffffffffffffffc4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffb4, 4)
+[+]     local var varnode: (stack, 0xffffffffffffffa8, 8)
+[+] getInputSource: Seq: (ram, 0x1008c2, 464, 6), Op: (unique, 0x100000cb, 8) COPY (const, 0x1009a4, 8)
+[-] COPY with const found, not searching further
+[=]     CALL at Seq: (ram, 0x1008c2, 142, 10) OP:  ---  CALL (ram, 0x100690, 8) , (unique, 0x100000cb, 8), depends on the following constants:
+[+]     ---> (const, 0x1009a4, 8)
+[-] #### Finished analyzing CALL at seq: (ram, 0x1008c2, 142, 10) ####
+[+] #### Analyzing CALL at seq: (ram, 0x1008db, 122, 2), OP:  ---  CALL (ram, 0x1006b0, 8) ####
+[-] #### Finished analyzing CALL at seq: (ram, 0x1008db, 122, 2) ####
+pcode_find_const_parameters.java> Finished!
 ```
 
 ## pcode_influence_branching.java
@@ -161,52 +382,32 @@ ControlFlowGraphTest.java> Running...
 [-] -----> Successor Block at: 0x1006c0
 [-] -----> Successor Block at: 0x100690
 [+] Code Block Start Address: 0x1006e0
-[+] Code Block Start Address: 0x10087e
-[-] -----> Successor Block at: 0x100895
-[-] -----> Successor Block at: 0x1008a3
-[-] -----> Successor Block at: 0x1006e0
 [+] Code Block Start Address: 0x1008c7
 [-] -----> Successor Block at: 0x1008db
 [-] -----> Successor Block at: 0x1008e0
 [+] Code Block Start Address: 0x100690
-[+] Code Block Start Address: 0x1008c7
-[-] -----> Successor Block at: 0x1008db
-[-] -----> Successor Block at: 0x1008e0
-[+] Code Block Start Address: 0x1006c0
-[+] Code Block Start Address: 0x100690
-[+] Code Block Start Address: 0x100895
-[-] -----> Successor Block at: 0x1008c7
-[-] -----> Successor Block at: 0x100690
-[+] Code Block Start Address: 0x1008a3
-[-] -----> Successor Block at: 0x1008c7
-[-] -----> Successor Block at: 0x1006c0
-[-] -----> Successor Block at: 0x100690
-[+] Code Block Start Address: 0x1006e0
-[+] Code Block Start Address: 0x1008db
-[-] -----> Successor Block at: 0x1006b0
-[+] Code Block Start Address: 0x1008e0
-[+] Code Block Start Address: 0x1008db
-[-] -----> Successor Block at: 0x1006b0
-[+] Code Block Start Address: 0x1008e0
-[+] Code Block Start Address: 0x1008c7
-[-] -----> Successor Block at: 0x1008db
-[-] -----> Successor Block at: 0x1008e0
-[+] Code Block Start Address: 0x100690
-[+] Code Block Start Address: 0x1008c7
-[-] -----> Successor Block at: 0x1008db
-[-] -----> Successor Block at: 0x1008e0
-[+] Code Block Start Address: 0x1006c0
-[+] Code Block Start Address: 0x100690
-[+] Code Block Start Address: 0x1006b0
-[+] Code Block Start Address: 0x1006b0
-[+] Code Block Start Address: 0x1008db
-[-] -----> Successor Block at: 0x1006b0
-[+] Code Block Start Address: 0x1008e0
 [+] Code Block Start Address: 0x1008db
 [-] -----> Successor Block at: 0x1006b0
 [+] Code Block Start Address: 0x1008e0
 [+] Code Block Start Address: 0x1006b0
-[+] Code Block Start Address: 0x1006b0
+[+] Printing Edges of the CFG:
+[-]    0x1008a3 --> 0x1006c0
+[-]    0x100895 --> 0x100690
+[-]    0x1008c7 --> 0x1008e0
+[-]    0x10080a --> 0x1006c0
+[-]    0x10080a --> 0x1006a0
+[-]    0x10087e --> 0x100895
+[-]    0x10080a --> 0x10087e
+[-]    0x1008c7 --> 0x1008db
+[-]    0x1008db --> 0x1006b0
+[-]    0x100895 --> 0x1008c7
+[-]    0x1008a3 --> 0x100690
+[-]    0x100871 --> 0x10087e
+[-]    0x10080a --> 0x1006d0
+[-]    0x10080a --> 0x100871
+[-]    0x1008a3 --> 0x1008c7
+[-]    0x10087e --> 0x1008a3
+[-]    0x10087e --> 0x1006e0
 ControlFlowGraphTest.java> Finished!
 
 ```
