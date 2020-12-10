@@ -144,7 +144,7 @@ public class pcode_find_const_parameters extends GhidraScript {
     	// String addr = String.format("%x",vr.getAddress().getOffset());
     	// Address addrObj = currentProgram.getAddressFactory().getAddress(addr);
     	// Data data = getDataContaining(addrObj);
-		printf("   [+] %s\n", vr.toString());
+		printf("[+]     ---> %s\n", vr.toString());
 
 	}
     }
@@ -164,10 +164,42 @@ public class pcode_find_const_parameters extends GhidraScript {
             Varnode[] inputs = pcode_op.getInputs();
 //			printf("seq: %s, OP: %s\n ", pcode_op.getSeqnum().toString(), pcode_op.toString());
 			if(pcode_op.getOpcode() == PcodeOp.CALL) {
+				printf("[+] #### Analyzing CALL at seq: %s, OP: %s ####\n", pcode_op.getSeqnum().toString(), pcode_op.toString());
 				for(int i = 1; i < inputs.length; i++) {
-					printf("[-] checking input: %s Space %d\n", inputs[i].toString(), inputs[i].getSpace());
+					printf("[-]     checking input: %s Space %d\n", inputs[i].toString(), inputs[i].getSpace());
+					HighVariable hv = inputs[i].getHigh();
+					if (hv != null) {
+						printf("[+]     HV found: %s, seq %s OP: %s \n", inputs[i].toString(),pcode_op.getSeqnum().toString(), pcode_op.toString());
+
+						Variable[] vars = hf.getFunction().getLocalVariables();
+						
+						for(Variable var: vars) {
+							VariableStorage vs = var.getVariableStorage();
+							Varnode[] storageVarnodes = vs.getVarnodes();
+							for (Varnode sv: storageVarnodes) {
+								printf("[+]     local var varnode: %s\n" , sv.toString());
+								if(sv.equals(inputs[i])) {
+									printf("[+]     Stack addr xxx yey\n");									
+								}
+							}
+						}
+						Address addr = inputs[i].getAddress();
+						
+
+						if (addr.isStackAddress()) {
+							}
+						
+						if (hv instanceof HighLocal) {
+							if (hv instanceof HighParam) {
+								printf("[+]     Parameter yey\n");
+							} else {
+								printf("[+]     Local Var yey\n");
+							}
+								
+						}
+					}
 					if (inputs[i].isConstant()) {
-						printf("[+] Constant found: %s\n", inputs[i].toString());
+						printf("[+]     Constant found: %s\n", inputs[i].toString());
 						constantSources.add(inputs[i]);
 					} else {
 							List<Varnode> sources = this.getInputSources(inputs[i].getDef());
@@ -180,10 +212,11 @@ public class pcode_find_const_parameters extends GhidraScript {
 					}
 				}
 				if (!constantSources.isEmpty()) {
-					printf("[+] CALL at Seq: %s OP: %s, depends on the following constants:\n", pcode_op.getSeqnum().toString(), pcode_op.toString());
+					printf("[=]     CALL at Seq: %s OP: %s, depends on the following constants:\n", pcode_op.getSeqnum().toString(), pcode_op.toString());
 					this.printConstVarnodes(constantSources);
 					constantSources.clear();
 				}
+				printf("[-] #### Finished analyzing CALL at seq: %s ####\n", pcode_op.getSeqnum().toString());
 			}
         }
         

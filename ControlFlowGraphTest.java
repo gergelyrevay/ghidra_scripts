@@ -90,6 +90,17 @@ public class ControlFlowGraphTest extends GhidraScript {
 		}
 		
 		/*
+		 * Prints the edges of the CFG
+		 */
+		public void printEdges() {
+			printf("[+] Printing Edges of the CFG:\n");
+			Collection<CodeBlockEdge> edges = cfg.getEdges();
+			for (CodeBlockEdge edge: edges) {
+				printf("[-]    0x%x --> 0x%x\n", edge.getStart().getCodeBlock().getFirstStartAddress().getOffset(), edge.getEnd().getCodeBlock().getFirstStartAddress().getOffset());
+			}
+		}
+		
+		/*
 		 * Simple dumping of the CFG just for validation
 		 */
 		public void printFCFG() {
@@ -104,7 +115,11 @@ public class ControlFlowGraphTest extends GhidraScript {
 				int i = 0;
 				while (i < vertexBuffer.size()) {
 					this.printVertex(vertexBuffer.get(i));
-					vertexBuffer.addAll(cfg.getSuccessors(vertexBuffer.get(i)));
+					for (CodeBlockVertex successor: cfg.getSuccessors(vertexBuffer.get(i))) {
+						if (!vertexBuffer.contains(successor)){
+							vertexBuffer.add(successor);
+						}
+					}
 					i++;
 				}
 				
@@ -136,6 +151,7 @@ public class ControlFlowGraphTest extends GhidraScript {
     	
         FunctionControlFlowGraph fcfg = new FunctionControlFlowGraph(func);
         fcfg.printFCFG();
+        fcfg.printEdges();
         
     }
 
